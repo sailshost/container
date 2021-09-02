@@ -16,6 +16,7 @@ RUN apk --update add --no-cache openssh bash \
 RUN apk --no-cache add curl \
   && apk add --no-cache npm \
   && apk add --no-cache nodejs \
+  && apk add --no-cache yarn \
   && apk add --no-cache git
 
 CMD ["/usr/sbin/sshd", "-D"]
