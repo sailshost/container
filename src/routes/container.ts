@@ -1,12 +1,15 @@
 import { Router, Response, Request } from "express";
 import Docker from "dockerode";
 import { v4 as uuid_v4 } from "uuid";
+import generator from "project-name-generator";
+
 
 const docker = new Docker({ socketPath: "/var/run/docker.sock" });
 const router = Router();
 
 router.post("/new", async (_req: Request, res: Response) => {
   const generated_uuid = uuid_v4().replaceAll("-", "");
+  const generated_name = generator({ number: true }).dashed;
 
   const network = await docker.createNetwork({
     Name: `sails_net_${generated_uuid}`,
@@ -20,6 +23,7 @@ router.post("/new", async (_req: Request, res: Response) => {
     const container = await docker.createContainer({
       name: `sails_web_${generated_uuid}`,
       Image: "sails_react:latest",
+      Env: [`VIRTUAL_HOST=${generated_name}.sailshost.com`, "DHPARAM_GENERATION=false", "CERT_NAME=sailshost.com"],
       HostConfig: {
         Mounts: [
           {
@@ -53,30 +57,12 @@ router.post("/new", async (_req: Request, res: Response) => {
     await network.connect({ Container: container.id });
   };
 
-  const create_proxy = async () => {
-    const container = await docker.createContainer({
-      name: `sails_proxy_${generated_uuid}`,
-      Image: "sails_nginx:latest",
-      HostConfig: {
-        Mounts: [
-          {
-            Target: "/app",
-            Source: volume.name,
-            Type: "volume",
-          },
-        ],
-      },
-    });
-    await container.start();
-    await network.connect({ Container: container.id });
-  };
-
   create_web();
   create_sftp();
-  // create_proxy();
 
   return res.send({
     successful: true,
+    uuid: generated_name 
   });
 });
 

@@ -25,6 +25,7 @@
     "cors": "^2.8.5",
     "dockerode": "^3.3.0",
     "express": "^4.17.1",
+    "project-name-generator": "^2.1.9",
     "ssh2-sftp-client": "^7.0.3"
   }
 }

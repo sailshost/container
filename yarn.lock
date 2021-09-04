@@ -567,6 +567,11 @@ commander@2.15.1:
   resolved "https://registry.yarnpkg.com/commander/-/commander-2.15.1.tgz#df46e867d0fc2aec66a34662b406a9ccafff5b0f"
   integrity sha512-VlfT9F3V0v+jr4yxPc5gg9s62/fIVWsd2Bk2iD435um1NlGMYdVCq+MjcXnhYq2icNOizHr1kK+5TI6H0Hy0ag==
 
+commander@^6.1.0:
+  version "6.2.1"
+  resolved "https://registry.yarnpkg.com/commander/-/commander-6.2.1.tgz#0792eb682dfbc325999bb2b84fddddba110ac73c"
+  integrity sha512-U7VdrJFnJgo4xjrHpTzu0yrHPGImdsmD95ZlgYSEajAn2JKzDhDTPG9kBTefmObL2w/ngeZnilk+OV9CG3d7UA==
+
 concat-map@0.0.1:
   version "0.0.1"
   resolved "https://registry.yarnpkg.com/concat-map/-/concat-map-0.0.1.tgz#d8a96bd77fd68df7793a73036a3ba0d5405d477b"
@@ -1364,7 +1369,7 @@ levn@~0.3.0:
     prelude-ls "~1.1.2"
     type-check "~0.3.2"
 
-lodash@^4.17.14:
+lodash@^4.17.14, lodash@^4.17.20:
   version "4.17.21"
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.21.tgz#679591c564c3bffaae8454cf0b3df370c3d6911c"
   integrity sha512-v2kDEe57lecTulaDIuNTPy3Ry4gLGJ6Z1O3vE1krgXZNrsQ+LFTGHVxVjcXPs17LhbZVGedAJv8XZ1tvj5FvSg==
@@ -1772,6 +1777,14 @@ prepend-http@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/prepend-http/-/prepend-http-2.0.0.tgz#e92434bfa5ea8c19f41cdfd401d741a3c819d897"
   integrity sha1-6SQ0v6XqjBn0HN/UAddBo8gZ2Jc=
+
+project-name-generator@^2.1.9:
+  version "2.1.9"
+  resolved "https://registry.yarnpkg.com/project-name-generator/-/project-name-generator-2.1.9.tgz#959177f1feb2355d74fa98745d72a65a5f75b674"
+  integrity sha512-QmLHqz2C4VHmAyDEAFlVfnuWAHr4vwZhK2bbm4IrwuHNzNKOdG9b4U+NmQbsm1uOoV4kGWv7+FVLsu7Bb/ieYQ==
+  dependencies:
+    commander "^6.1.0"
+    lodash "^4.17.20"
 
 promise-retry@^2.0.1:
   version "2.0.1"
